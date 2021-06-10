@@ -11,5 +11,3 @@ class TestUser(TestCase):
         self.assertEqual(user.email_address, "joe@gmail.com")
         self.assertEqual(user.password_hash, "Joee")
         self.assertEqual(user.budget, 1000)
-
-
