@@ -1,8 +1,8 @@
 from market.models import User
-from unittest import TestCase
+from tests.base_test import BaseTest
 
 
-class TestUser(TestCase):
+class TestUser(BaseTest):
     def test_create_user(self):
         user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=1000)
 
@@ -11,3 +11,4 @@ class TestUser(TestCase):
         self.assertEqual(user.email_address, "joe@gmail.com")
         self.assertEqual(user.password_hash, "Joee")
         self.assertEqual(user.budget, 1000)
+ 

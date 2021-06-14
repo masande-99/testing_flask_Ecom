@@ -25,7 +25,7 @@ class TestRegister(BaseTest):
                 self.assertTrue(budget)
 
                 # asserting that the user is shown the message below
-                self.assertIn(b'Account created successfully! You are now logged in as', response.data)
+                self.assertIn(b'Account created successfully! You are now logged in as JoeDoe', response.data)
 
                 # Asserting that the user is redirected to the market page
                 self.assertEqual('http://localhost/market', request.url)
