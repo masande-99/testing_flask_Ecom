@@ -11,12 +11,3 @@ class TestUser(BaseTest):
         self.assertEqual(user.email_address, "joe@gmail.com")
         self.assertEqual(user.password_hash, "Joee")
         self.assertEqual(user.budget, 1000)
-
-    def test_password_method(self):
-        pass
-
-    def test_password_setter(self):
-        pass
-
-    def test_password_correction(self):
-        pass
