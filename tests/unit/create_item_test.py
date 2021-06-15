@@ -1,8 +1,8 @@
 from market.models import Item, User
-from tests.base_test import BaseTest
+from unittest import TestCase
 
 
-class TestItem(BaseTest):
+class TestItem(TestCase):
     def test_create_item(self):
         item = Item(id=1, name="New Product", price=200, barcode=1234567, description="This is a jacket")
 
@@ -21,27 +21,15 @@ class TestItem(BaseTest):
         self.assertTrue(user)
 
     def test_can_sell_item(self):
+        items = Item(id=1, name="New Product", price=200, barcode=1234567, description="This is a jacket", owner=1)
 
-        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=1000,)
-        items = Item(id=1, name="New Product", price=200, barcode=1234567, description="This is a jacket", owner=1).sell(user)
+        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=800,).can_sell(item_obj=Item)
 
-        # Asserting that there is no Item in items
-        self.assertFalse(items)
+        # Asserting that the user is not in database and can't buy the item
+        self.assertFalse(user)
 
     def test_budget_prettier(self):
 
         user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=1000)
 
         self.assertTrue(user.prettier_budget, 1000)
-
-
-
-
-
-
-
-
-
-
-
-
