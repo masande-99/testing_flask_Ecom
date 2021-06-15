@@ -35,7 +35,6 @@ def market_page():
             else:
                 flash(f"Something went wrong with selling {s_item_object.name}", category='danger')
 
-
         return redirect(url_for('market_page'))
 
     if request.method == "GET":

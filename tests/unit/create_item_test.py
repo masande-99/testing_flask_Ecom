@@ -33,3 +33,12 @@ class TestItem(TestCase):
         user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=1000)
 
         self.assertTrue(user.prettier_budget, 1000)
+
+    def test_can_not_buy(self):
+
+        item = Item(id=1, name="New Product", price=200, barcode=1234567, description="This is a jacket", owner=1)
+
+        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=100).can_purchase(item)
+
+        self.assertFalse(user)
+
