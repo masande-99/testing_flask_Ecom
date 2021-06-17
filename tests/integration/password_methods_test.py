@@ -1,5 +1,3 @@
-from flask import request
-
 from tests.base_test import BaseTest
 from market import db
 from market.models import User, Item
