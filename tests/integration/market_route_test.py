@@ -67,3 +67,14 @@ class TestMarketRoute(BaseTest):
 
                 self.assertTrue(user.can_sell(purchased_item))
                 self.assertFalse(user1.can_sell(purchased_item))
+
+    def test_market_route_returns_market(self):
+        with self.app:
+            with self.app_context:
+                response1 = self.app.post('/register',
+                                          data=dict(id=2, username="JoDoe", email_address="jo@gmail.com",
+                                                    password1="202176", password2="202176",), follow_redirects=True)
+
+                response = self.app.post('/market', follow_redirects=True)
+
+                self.assertEqual('http://localhost/market', request.url)

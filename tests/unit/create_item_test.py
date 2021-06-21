@@ -20,17 +20,9 @@ class TestItem(TestCase):
 
         self.assertTrue(user)
 
-    def test_can_sell_item(self):
-        items = Item(id=1, name="New Product", price=200, barcode=1234567, description="This is a jacket", owner=1)
-
-        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=800,).can_sell(item_obj=Item)
-
-        # Asserting that the user is not in database and can't buy the item
-        self.assertFalse(user)
-
     def test_budget_prettier(self):
 
-        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=1000)
+        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee")
 
         self.assertTrue(user.prettier_budget, 1000)
 
