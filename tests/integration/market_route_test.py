@@ -16,10 +16,6 @@ class TestMarketRoute(BaseTest):
                 user = db.session.query(User).filter_by(email_address="joe@gmail.com").first()
                 self.assertTrue(user)
 
-                respons = self.app.post('/login', data=dict(username="JoeDoe", password="202177"), follow_redirects=True)
-
-                self.assertIn(b'Success! You are logged in as: JoeDoe', respons.data)
-
                 # Asserting that the user is redirected to the market page after login
                 self.assertEqual('http://localhost/market', request.url)
 

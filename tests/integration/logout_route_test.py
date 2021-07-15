@@ -28,3 +28,22 @@ class TestLogout(BaseTest):
 
                 # Asserting that the user is redirected to the logged out page
                 self.assertEqual('http://localhost/logout', request.url)
+
+
+    def test_logout_route_returns_home_page(self):
+        with self.app:
+            with self.app_context:
+                request = self.app.post('/register',
+                                         data=dict(username="JoeDoe", email_address="joe@gmail.com",
+                                                   password1="202177", password2="202177",), follow_redirects=True)
+
+                user = db.session.query(User).filter_by(email_address="joe@gmail.com").first()
+                self.assertTrue(user)
+
+
+                request1 = self.app.post('/logout', follow_redirects=True)
+
+                self.assertEqual(200, request1.status_code)
+                self.assertEqual('http://localhost/logout', request.url)
+
+

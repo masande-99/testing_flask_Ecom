@@ -42,3 +42,11 @@ class TestLogin(BaseTest):
                 # Asserting that the user is redirected to the login page after submitting
                 self.assertEqual('http://localhost/login', request.url)
 
+    def test_login_returns_login_page(self):
+        with self.app:
+            with self.app_context:
+                response = self.app.post('/login', follow_redirects=True)
+
+                self.assertEqual('http://localhost/login', request.url)
+
+

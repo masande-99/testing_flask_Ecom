@@ -20,11 +20,18 @@ class TestItem(TestCase):
 
         self.assertTrue(user)
 
-    def test_budget_prettier(self):
+    def test_budget_prettier_returns_no_commar_if_int_len_is_less_than_4(self):
 
-        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee")
+        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=800)
 
-        self.assertTrue(user.prettier_budget, 1000)
+        self.assertNotEqual(user.prettier_budget, "1,000")
+
+    def test_budget_prettier_returns_a_commar_if_int_len_is_equal_to_4(self):
+
+        user = User(id=1, username="joe", email_address="joe@gmail.com", password_hash="Joee", budget=1000)
+
+        self.assertEqual(user.prettier_budget, "1,000$")
+
 
     def test_can_not_buy(self):
 

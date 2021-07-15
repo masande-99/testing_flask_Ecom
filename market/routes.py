@@ -16,7 +16,7 @@ def market_page():
     purchase_form = PurchaseItemForm()
     selling_form = SellItemForm()
     if request.method == "POST":
-        #Purchase Item Logic
+        # Purchase Item Logic
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(name=purchased_item).first()
         if p_item_object:
@@ -25,7 +25,7 @@ def market_page():
                 flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
             else:
                 flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
-        #Sell Item Logic
+        # Sell Item Logic
         sold_item = request.form.get('sold_item')
         s_item_object = Item.query.filter_by(name=sold_item).first()
         if s_item_object:
